@@ -2,13 +2,17 @@ Word = require("./word.js");
 
 function Game(){
 	this.score = 0;
+	this.start();
 }
 Game.prototype.start = function() {
-	this.random
+	this.word = this.random();
+	var characters = new Set(this.word.value.split(''));
+	this.tries = Math.floor((26 - characters.length) / 4);
+	this.guesses = new Set();
+	this.done = false;
 };
 
-Game.prototype.random = function() {
-	var words = [
+Game.prototype.bank = [
 			"Datsun",
 			"Honda",
 			"Infiniti",
@@ -83,7 +87,8 @@ Game.prototype.random = function() {
 			"Saleen",
 			"Scion",
 			"Shelby",
-			"Tesla Motors"];
-	return
+			"Tesla Motors"]
+			.map(s => s.toUpperCase());
 
-};
+Game();
+module.exports = Game;

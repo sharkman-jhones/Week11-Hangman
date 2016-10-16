@@ -2,7 +2,7 @@ Letter = require('./letter.js');
 
 function Word(value){
 	this.value = value;
-	this.letters = value.split('').map(l => new Letter(;));
+	this.letters = value.split('').map(l => new Letter(l));
 }
 
 Word.prototype.render = function(){
